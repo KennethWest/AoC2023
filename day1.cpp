@@ -18,12 +18,7 @@ int main() {
         for (std::sregex_iterator it = std::sregex_iterator(l.begin(), l.end(), e1); it != std::sregex_iterator(); ++it) {
             tokens.push_back(it->str());
         }
-        if (tokens.size() == 1) {
-            sum1 += (std::stoi(tokens[0]) * 10) + std::stoi(tokens[0]);
-        }
-        else {
-            sum1 += (std::stoi(tokens[0]) * 10) + std::stoi(tokens.back());
-        }
+        tokens.size() == 1 ? sum1 += (std::stoi(tokens[0]) * 10) + std::stoi(tokens[0]) : sum1 += (std::stoi(tokens[0]) * 10) + std::stoi(tokens.back());
         tokens.clear();
         
         /*Part 2*/
