@@ -30,11 +30,8 @@ int main() {
             sum2 += (std::stoi(tokens[0]) * 10) + std::stoi(tokens[0]);
         }
         else {
-            int d1 = 0;
-            int d2 = 0;
-            tokens[0].size() > 1 ? d1 = v[tokens[0]] * 10 : d1 = std::stoi(tokens[0]) * 10;
-            tokens.back().size() > 1 ? d2 = v[tokens.back()] : d2 = std::stoi(tokens.back());
-            sum2 += d1 + d2;
+            tokens[0].size() > 1 ? sum2 += v[tokens[0]] * 10 : sum2 += std::stoi(tokens[0]) * 10;
+            tokens.back().size() > 1 ? sum2 += v[tokens.back()] : sum2 += std::stoi(tokens.back());
         }
         tokens.clear();
     }
