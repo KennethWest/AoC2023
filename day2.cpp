@@ -30,15 +30,15 @@ int main() {
             }
         }
         /*Part 1*/
-        /*Because we collected the game data in order it appears, we know this sequence happens: digit - color - ... etc, we can take advantage of that by
-        storing the digit then at the next token (a color) we will decide if a game is valid or not.*/
+        /*Because we collected the game data in the order it appears, we know this sequence happens: digit - color - ... etc, we can take advantage of that by
+        storing the digit. Then at the next token (a color) we will decide if a game is valid or not.*/
         int currentNum;
         for (auto e : tokens) {
-            if (e.size() < 3) {
+            if (e.size() < 3) { // digits are at most length 2 so if it is a string of length 2 or less its a digit.
                 currentNum = std::stoi(e);
             }
             else{
-                if (c[e] < currentNum) { //game is not valid, mark it as false in the games map
+                if (c[e] < currentNum) { //chek game is not valid, mark it as false in the games map
                     gs1[id] = false;
                     goto exitForLoop; //DO NOT critique my use of goto statements, they are mostly safe to move only forward in a sequence and very convenient in this case.
                 }
@@ -49,25 +49,25 @@ int main() {
 
         /*Part 2*/
         /*Logic follows exactly the same as Part 1 except this time we build a map for each game that holds the minimum amount of cubes of each time needed to play a game.
-        Which is just a fancy way of saying, what is largest amount of cubes per color that appeared in a round of a game?*/
+        Which is just a fancy way of saying, what is largest amount of cubes, by color, that appeared in any round of a game?*/
         std::map<std::string, int> m;
         for (auto e : tokens) {
             if (e.size() < 3) {
                 currentNum = std::stoi(e);
             }
             else{
-                if (!m.contains(e)) {
+                if (!m.contains(e)) { //if we havent encountered the color yet, add it.
                     m[e] = currentNum;
                 }
                 else {
-                    if (m[e] < currentNum) {
+                    if (m[e] < currentNum) { //otherwise check if the quantity of cubes is more than encountered before.
                         m[e] = currentNum;
                     }
                 }
             }
         }
         int total = 1;
-        for (auto e : m) { //collect the sum of the multiplication of min cubes for part 2
+        for (auto e : m) { //collect the sum of the multiplications of min cubes for part 2
             total *= e.second;
         }
         sum2 += total;
