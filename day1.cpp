@@ -6,7 +6,7 @@
 #include <map>
 
 int main() {
-    std::ifstream f(".\\day1.txt");
+    std::ifstream f("C:\\Users\\kenwe\\Desktop\\AoC2023\\day1.txt");
     std::string l;
     std::map<std::string, int> v = {{"one", 1}, {"two", 2}, {"three", 3}, {"four", 4}, {"five", 5}, {"six", 6}, {"seven", 7}, {"eight", 8}, {"nine", 9}};
     std::vector<std::string> tokens;
